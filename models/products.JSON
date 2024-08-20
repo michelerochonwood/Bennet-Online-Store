@@ -1,0 +1,23 @@
+[
+    {
+      "title": "Manitoba Honey, Jar",
+      "subtitle": "190 ml",
+      "image": "/images/fulljarhoney.png",
+      "description": "Enjoy the pure delight of Manitoba honey in a convenient 190 ml jar. Perfect for sweetening tea or as a topping for your favorite recipes.",
+      "price": "5.00"
+    },
+    {
+      "title": "Manitoba Honey, Bucket",
+      "subtitle": "1.5 L",
+      "image": "/images/tablebucket.png",
+      "description": "Get more of the pure delight of Manitoba honey with our 1.5 L bucket. Ideal for families or heavy use in cooking and baking.",
+      "price": "12.00"
+    },
+    {
+      "title": "Beekeeping Supplies",
+      "subtitle": "Frames, Queens, and Other Equipment",
+      "image": "/images/frameinfield.png",
+      "description": "Bennet's Bees offers a range of beekeeping supplies, including frames, queen bees, and other essential equipment for beekeepers.",
+      "price": "X.XX"
+    }
+  ]

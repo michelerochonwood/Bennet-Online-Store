@@ -1,0 +1,18 @@
+<div class="home2-container">
+    <div class="home-section2">
+        {{#each products}}
+        <div class="home-item">
+            <img src="{{this.image}}" class="product-image" alt="{{this.title}}">
+            <div class="product-info">
+                <div class="producttitle">{{this.title}}</div>
+                <div class="productsub">{{this.subtitle}}</div>
+                <div class="producttext">{{this.description}}</div>
+                <div class="price">${{this.price}}</div>
+            </div>
+        </div>
+        {{else}}
+        <p>No products found.</p>
+        {{/each}}
+
+    </div>
+</div>

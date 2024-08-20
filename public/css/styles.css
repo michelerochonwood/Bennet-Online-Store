@@ -1,0 +1,579 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
+
+html, body {
+  scroll-behavior: smooth;
+  margin: 0;
+  padding: 0;
+  height: 100%;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  padding-top: 60px;
+  padding-bottom: 60px;
+}
+
+h1 {
+  padding-top: 200px;
+}
+
+
+/*HEADER*/
+header {
+  display: grid;
+  grid-template-columns: 30% 20% 50%;
+  grid-template-areas: "leftheader centerheader rightheader";
+  width: 100%;
+  background: linear-gradient(to top, transparent, #f9deb7);
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 1000;
+}
+
+/* Header Grid areas */
+.leftheader {
+  grid-area: leftheader;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  padding: 0 10px;
+  position: relative;
+}
+
+.centerheader {
+  grid-area: centerheader;
+}
+
+.rightheader {
+  grid-area: rightheader;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  padding: 0 10px;
+}
+
+/* Adjust the logo's position */
+.leftheader img {
+  position: absolute;
+  top: 55%;
+  left: -15px;
+  transform: translateY(-50%);
+  width: 90%;
+  height: auto;
+  z-index: 1;
+}
+
+/* Style the nav items */
+.rightheader .navbar-nav {
+  display: flex;
+  align-items: center;
+  margin: 0;
+  padding: 0;
+}
+
+.rightheader .navbar-nav li {
+  margin-left: 10px;
+  list-style-type: none;
+}
+
+.rightheader .navbar-nav li a {
+  color: #f3bd72;
+  font-family: "Montserrat";
+  text-decoration: none;
+  text-transform: uppercase;
+  text-align: center;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  height: 100px;
+  padding: 0 40px;
+  font-size: 100%;
+}
+
+/* Hover effect for nav links */
+.rightheader .navbar-nav li a {
+  color: #f3bd72;
+  transition: color 0.3s ease, background-color 0.3s ease;
+}
+  
+.rightheader .navbar-nav li a:hover {
+  color: #f0ad4e;
+  text-shadow: 0 0 10px #f0ad4e;
+}
+
+
+/* HOME PARTIAL 1 */
+/* Grid Container for Home Section */
+.home-section {
+  display: grid;
+  grid-template-columns: 1fr 1fr; /* Two equal-width columns */
+  gap: 20px; /* Space between the columns */
+  padding: 20px;
+  margin-top: 30px;
+  width: 100%;
+}
+
+
+.homeleft1, .homeright1 {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  border-radius: 8px; /* Rounded corners */
+}
+
+.homeleft1 {
+  flex-direction: column; /* Stack children vertically */
+  text-align: center; /* Center-align text */
+  font-family: "Montserrat";
+  position: relative; /* Allow positioning of the background image */
+  background-image: url('/images/beeback.png'); /* Add the background image */
+  background-size: 50%; /* Ensure the image covers the area */
+  background-position: center; /* Center the background image */
+  background-repeat: no-repeat;
+  
+}
+
+/* Style text to ensure readability */
+.homelefttitle, .homeleftsub, .homelefttext {
+  position: relative;
+  z-index: 2; /* Ensure text is above the background image */
+}
+
+#homehoney {
+  width: 80%;
+}
+
+.homelefttitle {
+  color: orange;
+  font-size: 2.5rem; /* Adjust font size */
+  font-weight: 500;
+}
+
+.homeleftsub {
+  margin-top: 30px;
+  color: black;  
+  font-size: 1.5rem; /* Adjust font size */
+  font-weight: 700;
+}
+
+.homelefttext  {
+  margin-top: 30px;
+  color: black;
+  width: 45%;
+  font-weight: 500;
+  line-height: 1.5;
+  font-size: 1rem; /* Adjust font size */
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .home-section {
+    grid-template-columns: 1fr; /* Single column layout on smaller screens */
+    gap: 10px; /* Reduce space between columns */
+  }
+}
+
+/* HOME PARTIAL 2 */
+
+/* Container for home section 2 with grey background */
+.home2-container {
+  background-image: url(/images/honeycomb.jpg); /* Background image */
+  background-size: cover; /* Cover the entire container */
+  background-position: center; /* Center the image */
+  padding: 20px; /* Padding around the grid */
+  width: 100%; /* Full width to cover the viewport */
+}
+
+.home-section2 {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr); /* Three equal-width columns */
+  gap: 5%; /* Space between the items */
+  padding: 20px;
+  margin: auto;
+  width: 80%; /* Centered at 80% width */
+  justify-content: center; /* Center the grid container horizontally */
+  position: relative; /* To position elements inside */
+}
+
+.home-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start; /* Align items to the top */
+  border: 1px solid #f7941d; /* Light border around each item */
+  border-radius: 3px; /* Rounded corners */
+  position: relative; /* Allow absolute positioning of the image */
+  background-color: white;
+  position: relative; /* Allow absolute positioning of the image */
+}
+
+.product-image {
+  width: 100%; /* Ensure image covers the full width of the home-item */
+  height: auto;
+  object-fit: cover; /* Cover the container while maintaining aspect ratio */
+}
+
+.product-info {
+  text-align: center;
+  font-family: "Montserrat";
+  padding: 15px;
+}
+
+.producttitle {
+  color: orange;
+  font-size: 2rem; /* Adjust font size */
+  font-weight: 500;
+}
+
+.productsub {
+  margin-top: 10px;
+  color: black;  
+  font-size: 1.2rem; /* Adjust font size */
+  font-weight: 700;
+}
+
+.producttext {
+  margin-top: 10px;
+  color: black;
+  text-align: center;
+  padding-top: 10px;
+  font-size: 1rem; /* Adjust font size */
+  line-height: 1.5;
+  width: 70%;
+  margin: auto;
+}
+
+.price {
+  margin-top: 10px;
+  color: #f7941d;
+  font-size: 1.2rem; /* Adjust font size */
+  font-weight: 700;
+  margin-bottom: 5%;
+}
+
+/* Responsive Styles */
+@media (max-width: 1200px) {
+  .home-section2 {
+    grid-template-columns: repeat(2, 1fr); /* Two columns on medium screens */
+  }
+}
+
+@media (max-width: 768px) {
+  .home-section2 {
+    grid-template-columns: 1fr; /* One column on small screens */
+    padding: 10px;
+  }
+
+  .product-image {
+    max-width: 150px; /* Adjust max-width for smaller screens */
+  }
+
+  .producttitle {
+    font-size: 1.5rem; /* Adjust font size for smaller screens */
+  }
+
+  .productsub {
+    font-size: 1rem; /* Adjust font size for smaller screens */
+  }
+
+  .producttext {
+    font-size: 0.9rem; /* Adjust font size for smaller screens */
+  }
+
+  .price {
+    font-size: 1rem; /* Adjust font size for smaller screens */
+  }
+}
+
+
+
+/* HOME PARTIAL 3 */
+/* Grid Container for Home Section 3 */
+.home-section3 {
+  display: grid;
+  grid-template-columns: 1fr 2fr; /* Image takes 1 fraction, text takes 2 fractions */
+  grid-template-areas: "home-left3 home-right3";
+  gap: 20px; /* Space between the image and text */
+  padding-top: 200px;
+  padding-bottom: 200px;
+  margin-top: 30px;
+  width: 80%;
+  font-family: "Montserrat";
+  margin: auto;
+}
+
+.home-left3 {
+  grid-area: home-left3;
+  display: flex;
+  align-items: flex-start; /* Align image to the top of the grid area */
+  justify-content: center;
+}
+
+.home-left3 img {
+  width: 100%; /* Ensure image covers the full width of the grid area */
+  height: auto; /* Maintain aspect ratio */
+}
+
+.home-right3 {
+  grid-area: home-right3;
+  display: flex;
+  flex-direction: column; /* Stack text vertically */
+  align-items: flex-start; /* Align text to the left */
+  justify-content: center; /* Center text vertically */
+}
+
+.homerighttitle {
+  font-size: 2rem;
+  font-weight: 600;
+  color: #f7941d;
+  margin-bottom: 10px;
+}
+
+.homerightsub {
+  font-size: 1.5rem;
+  font-weight: 400;
+  color: #555;
+  margin-bottom: 20px;
+}
+
+.homerighttext {
+  font-size: 1rem;
+  color: #666;
+  line-height: 1.6;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .home-section3 {
+    grid-template-columns: 1fr; /* Single column layout on smaller screens */
+    grid-template-areas:
+      "home-left3"
+      "home-right3";
+    gap: 10px; /* Reduce space between image and text */
+  }
+
+  .home-left3, .home-right3 {
+    text-align: center; /* Center align text on smaller screens */
+  }
+}
+
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .home-section3 {
+    grid-template-columns: 1fr; /* Single column layout on smaller screens */
+    gap: 10px; /* Reduce space between columns */
+  }
+
+  .homeleft3, .homeright3 {
+    text-align: center; /* Center text on smaller screens */
+  }
+
+  .homerighttitle, .homerightsub, .homerighttext {
+    margin-bottom: 10px; /* Adjust margin for better spacing on smaller screens */
+  }
+}
+
+
+/* Product Page */
+.product-container {
+  display: grid;
+  grid-template-columns: 1fr 1fr; /* Two columns layout */
+  gap: 20px; /* Space between the columns */
+  padding: 20px;
+  margin: 0 auto;
+  max-width: 1200px; /* Max width to center the content */
+}
+
+.product-image img {
+  width: 100%;
+  height: auto;
+  object-fit: cover; /* Ensure the image covers the space without distortion */
+  border-radius: 8px; /* Rounded corners */
+}
+
+.product-details {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.product-title {
+  color: orange;
+  font-size: 2.5rem;
+  font-weight: 500;
+}
+
+.product-subtitle {
+  margin-top: 10px;
+  color: black;
+  font-size: 1.8rem;
+  font-weight: 700;
+}
+
+.product-quantity {
+  margin-top: 20px;
+  font-size: 1rem;
+}
+
+.quantity-field {
+  margin-left: 10px;
+  width: 80px; /* Adjust width as needed */
+  height: 30px;
+  text-align: center;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+.product-price {
+  margin-top: 20px;
+  color: #f7941d;
+  font-size: 1.8rem;
+  font-weight: 700;
+}
+
+.product-description {
+  margin-top: 20px;
+  color: black;
+  font-size: 1rem;
+  line-height: 1.5;
+}
+
+.add-to-cart-button {
+  margin-top: 30px;
+  padding: 10px 20px;
+  font-size: 1rem;
+  color: white;
+  background-color: #f7941d;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.add-to-cart-button:hover {
+  background-color: #e67e22; /* Darker orange for hover effect */
+}
+
+/* Responsive Styles */
+@media (max-width: 768px) {
+  .product-container {
+    grid-template-columns: 1fr; /* Stack columns on smaller screens */
+    text-align: center;
+  }
+
+  .product-image img {
+    max-width: 100%;
+    height: auto;
+  }
+
+  .product-details {
+    align-items: center;
+  }
+
+  .quantity-field {
+    width: 60px; /* Adjust width for smaller screens */
+  }
+}
+
+
+
+/* FOOTER */
+footer {
+  background: linear-gradient(to bottom, transparent, #f9deb7);
+  padding: 20px;
+  display: flex;
+  justify-content: center;
+  font-family: "Montserrat";
+}
+
+.footer-container {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr; /* Three equal-width columns */
+  width: 100%;
+  max-width: 1200px; /* Adjust as needed */
+  gap: 20px; /* Space between columns */
+}
+
+.footer-left, .footer-center, .footer-right {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.footer-left p, .footer-center h4, .footer-right h4 {
+  margin: 0;
+  padding: 0;
+}
+
+.footer-left a {
+  color: #333;
+  text-decoration: none;
+}
+
+
+.footer-center .social-media {
+  display: flex;
+  gap: 10px;
+}
+
+.footer-center .social-icon {
+  display: inline-block;
+  width: 40px;
+  height: 40px;
+}
+
+#socialicon {
+  max-width: 30px;
+  height: auto;
+}
+
+.mailing-list-form {
+  display: flex;
+  flex-direction: column;
+}
+
+.mailing-list-form input {
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  margin-bottom: 10px;
+}
+
+.mailing-list-form button {
+  padding: 10px;
+  border: none;
+  background-color: #f0ad4e; /* Adjust color as needed */
+  color: white;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.mailing-list-form button:hover {
+  background-color: #ec971f;
+}
+
+/* Responsive Design */
+@media (max-width: 992px) {
+  .footer-container {
+    grid-template-columns: 1fr 1fr; /* Two columns on medium screens */
+  }
+}
+
+@media (max-width: 768px) {
+  .footer-container {
+    grid-template-columns: 1fr; /* Single column layout on smaller screens */
+    gap: 10px; /* Reduce space between columns */
+  }
+
+  .footer-center .social-media {
+    justify-content: center; /* Center social media icons in smaller viewports */
+  }
+
+  .mailing-list-form input, .mailing-list-form button {
+    width: 100%; /* Make form elements full width on small screens */
+  }
+}

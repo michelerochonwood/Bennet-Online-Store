@@ -1,14 +1,8 @@
-// products.js in routes
 const express = require('express');
 const router = express.Router();
 const Product = require('../models/product');
 
-// Route to render the add product form
-router.get('/add', (req, res) => {
-    res.render('add-product');
-});
-
-// Route to handle form submission
+// Route to handle form submission (no change needed here)
 router.post('/add', async (req, res) => {
     try {
         const { title, subtitle, image, description, price } = req.body;
@@ -31,22 +25,19 @@ router.post('/add', async (req, res) => {
     }
 });
 
-// Route to display all products
+// Route to display all products (include the add product form in this view)
 router.get('/', async (req, res) => {
-    console.log('GET /products route hit'); // Add this line to debug
     try {
-        const products = await Product.find();
-        console.log(products); // Add this line to debug
-        res.render('product-list', { products });
+        const products = await Product.find().lean(); // Use .lean() to get plain objects
+        res.render('product-list', { products }); // Render the product-list view with products
     } catch (err) {
-        console.error('Error fetching products:', err);
         res.status(500).send('Error fetching products: ' + err.message);
     }
 });
 
-
-
 module.exports = router;
+
+
 
 
 

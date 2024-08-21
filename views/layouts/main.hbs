@@ -7,12 +7,17 @@
     <link rel="stylesheet" href="/css/styles.css">
 </head>
 <body>
-    {{> header}} <!-- Include the header partial -->
-    
-    {{{body}}} <!-- This is where the content from the view will be inserted -->
-    
-    {{> footer}} <!-- Include the footer partial -->
+    <div class="page-container">
+        {{> header}} <!-- Include the header partial -->
+        
+        <div class="content-wrap">
+            {{{body}}} <!-- This is where the content from the view will be inserted -->
+        </div>
+        
+        {{> footer}} <!-- Include the footer partial -->
+    </div>
 </body>  
 </html>
+
 
 

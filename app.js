@@ -3,6 +3,11 @@ const { join } = require('path');
 const { engine } = require('express-handlebars');
 const mongoose = require('mongoose');
 const bodyParser = require('body-parser');
+const session = require('express-session');
+const MongoStore = require('connect-mongo');
+const passport = require('passport');
+const LocalStrategy = require('passport-local').Strategy;
+const User = require('./models/user'); // Ensure this path is correct
 
 // Create Express app
 const app = express();
@@ -16,7 +21,7 @@ app.engine('hbs', engine({
     extname: '.hbs',
     defaultLayout: 'main',
     layoutsDir: join(__dirname, 'views/layouts'),
-    partialsDir: join(__dirname, 'views/partials')
+    partialsDir: join(__dirname, 'views/partials'),
 }));
 app.set('view engine', 'hbs');
 app.set('views', join(__dirname, 'views'));
@@ -34,18 +39,66 @@ mongoose.connect(mongoURI, {
 .then(() => console.log('MongoDB connected'))
 .catch(err => console.error('MongoDB connection error:', err));
 
+// Set up session and Passport
+app.use(session({
+    secret: 'your-secret-key', // Change this to a secure key
+    resave: false,
+    saveUninitialized: false,
+    store: MongoStore.create({ mongoUrl: mongoURI })
+}));
+
+app.use(passport.initialize());
+app.use(passport.session());
+
+// Passport Local Strategy
+passport.use(new LocalStrategy({
+    usernameField: 'email'
+}, async (email, password, done) => {
+    try {
+        const user = await User.findOne({ email });
+        if (!user) return done(null, false, { message: 'Incorrect email.' });
+        const isMatch = await user.comparePassword(password);
+        if (!isMatch) return done(null, false, { message: 'Incorrect password.' });
+        return done(null, user);
+    } catch (err) {
+        return done(err);
+    }
+}));
+
+passport.serializeUser((user, done) => {
+    done(null, user.id);
+});
+
+passport.deserializeUser(async (id, done) => {
+    try {
+        const user = await User.findById(id).lean();
+        done(null, user);
+    } catch (err) {
+        done(err);
+    }
+});
+
+// Middleware to set user in response locals
+app.use((req, res, next) => {
+    res.locals.user = req.user || null; // Use req.user from passport
+    next();
+});
+
 // Set up routes
 app.use('/', require('./routes/index'));
-app.use('/products', require('./routes/products')); // Ensure this is correct
+app.use('/products', require('./routes/products'));
 app.use('/cart', require('./routes/cart'));
 app.use('/checkout', require('./routes/checkout'));
-app.use('/', require('./routes/home2')); // Use the new route
+app.use('/auth', require('./routes/auth')); // Add authentication routes
 
 // Start server
 const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => {
     console.log(`Server running on port ${PORT}`);
 });
+
+
+
 
 
 

@@ -13,6 +13,7 @@ body {
   min-height: 100vh;
   padding-top: 60px;
   padding-bottom: 60px;
+  min-height: 100vh;
 }
 
 h1 {
@@ -20,13 +21,17 @@ h1 {
 }
 
 .page-container {
-  min-height: 100vh;
   display: flex;
   flex-direction: column;
+  flex-grow: 1;
 }
 
 .content-wrap {
   flex: 1; /* Takes up all the available space, pushing the footer down */
+  display: flex;
+  flex-direction: column;
+  justify-content: center; /* Optional: If you want to vertically center content */
+  padding-bottom: 80px;
 }
 
 .center-page-title {
@@ -49,9 +54,6 @@ h1 {
   font-size: 1rem;
 }
 
-.nav-link:hover {
-  background-color: #ec971f; /* Darker orange for hover effect */
-}
 
 
 /*HEADER*/
@@ -87,6 +89,8 @@ header {
   justify-content: flex-end;
   align-items: center;
   padding: 0 10px;
+  font-family: "Montserrat";
+  color: darkorange;
 }
 
 /* Adjust the logo's position */
@@ -137,6 +141,39 @@ header {
   color: #f0ad4e;
   text-shadow: 0 0 10px #f0ad4e;
 }
+
+.cart-container {
+  position: relative;
+  display: flex;
+  align-items: center;
+  margin-left: 10px; /* Adjust as needed */
+}
+
+.cart-link {
+  color: #333;
+  text-decoration: none;
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.cart-icon {
+  width: 50px;
+  height: 50px;
+  padding-right: 30px;
+}
+
+.cart-count {
+  position: absolute;
+  top: -10px;
+  color: white;
+  border-radius: 50%;
+  padding: 2px 6px;
+  font-size: 0.8rem;
+  font-weight: bold;
+}
+
+
 
 
 /* HOME PARTIAL 1 */
@@ -521,6 +558,75 @@ header {
   }
 }
 
+/*LOGIN PAGE*/
+/* Login Page Styles */
+.login-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 40px;
+  margin: 0 auto;
+}
+
+.login-form {
+  background-color: white;
+  border: 1px solid #f7941d;
+  border-radius: 8px;
+  padding: 20px;
+  width: 70%;
+  margin: auto;
+}
+
+.login-form label {
+  display: block;
+  margin-bottom: 8px;
+  font-weight: bold;
+  color: #333;
+}
+
+.login-form input {
+  width: calc(100% - 20px);
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  margin-bottom: 20px;
+  font-size: 1rem;
+}
+
+.login-form button {
+  padding: 10px 20px;
+  border: none;
+  background-color: #f7941d;
+  color: white;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 1rem;
+  margin: auto;
+}
+
+.login-form button:hover {
+  background-color: #ec971f; /* Darker orange for hover effect */
+}
+
+/* Responsive Styles */
+@media (max-width: 768px) {
+  .login-container {
+    padding: 20px;
+  }
+
+  .login-form {
+    padding: 15px;
+  }
+
+  .login-form input {
+    width: 100%;
+  }
+
+  .login-form button {
+    width: 100%;
+  }
+}
+
 
 
 /* Product Page */
@@ -755,6 +861,11 @@ header {
   margin-bottom: 5%;
 }
 
+.product-link {
+  text-decoration: none;
+  color: inherit;
+}
+
 /* Styling for admin controls */
 .admin-controls {
   margin-top: 10px;
@@ -804,15 +915,544 @@ header {
   }
 }
 
+/* Edit Product Page */
+.edit-product-container {
+  display: grid;
+  grid-template-columns: 1fr 1fr; /* Two columns layout */
+  gap: 20px; /* Space between the columns */
+  padding: 20px;
+  margin: 0 auto;
+  max-width: 1200px; /* Max width to center the content */
+}
+
+.edit-product-image img {
+  width: 100%;
+  height: auto;
+  object-fit: cover; /* Ensure the image covers the space without distortion */
+  border-radius: 8px; /* Rounded corners */
+}
+
+.edit-product-details {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.edit-product-title {
+  color: orange;
+  font-size: 2.5rem;
+  font-weight: 500;
+}
+
+.edit-product-subtitle {
+  margin-top: 10px;
+  color: black;
+  font-size: 1.8rem;
+  font-weight: 700;
+}
+
+.edit-product-quantity {
+  margin-top: 20px;
+  font-size: 1rem;
+}
+
+.edit-quantity-field {
+  margin-left: 10px;
+  width: 80px; /* Adjust width as needed */
+  height: 30px;
+  text-align: center;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+.edit-product-price {
+  margin-top: 20px;
+  color: #f7941d;
+  font-size: 1.8rem;
+  font-weight: 700;
+}
+
+.edit-product-description {
+  margin-top: 20px;
+  color: black;
+  font-size: 1rem;
+  line-height: 1.5;
+}
+
+.edit-save-button {
+  margin-top: 30px;
+  padding: 10px 20px;
+  font-size: 1rem;
+  color: white;
+  background-color: #f7941d;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.edit-save-button:hover {
+  background-color: #e67e22; /* Darker orange for hover effect */
+}
+
+/* Responsive Styles */
+@media (max-width: 768px) {
+  .edit-product-container {
+    grid-template-columns: 1fr; /* Stack columns on smaller screens */
+    text-align: center;
+  }
+
+  .edit-product-image img {
+    max-width: 100%;
+    height: auto;
+  }
+
+  .edit-product-details {
+    align-items: center;
+  }
+
+  .edit-quantity-field {
+    width: 60px; /* Adjust width for smaller screens */
+  }
+}
+
+/* EDIT PRODUCT FORM STYLES */
+
+/* Container for the edit product form with a similar background */
+.edit-product-form-container {
+  background-image: url(/images/honeycomb.png); /* Background image */
+  background-size: contain; /* Cover the entire container */
+  background-position: center; /* Center the image */
+  padding: 20px; /* Padding around the grid */
+  width: 100%; /* Full width to cover the viewport */
+  background-repeat: no-repeat;
+}
+
+/* Section for editing a product */
+.edit-product-section {
+  background-color: white;
+  border: 1px solid #f7941d;
+  border-radius: 3px;
+  padding: 20px;
+  margin: 20px 0;
+  width: 50%;
+  margin: auto;
+  font-family: "Montserrat";
+}
+
+/* Styling for form elements */
+.edit-product-section form {
+  display: flex;
+  flex-direction: column;
+}
+
+.edit-product-section label {
+  margin-top: 10px;
+  font-weight: bold;
+  color: #666;
+}
+
+.edit-product-section input {
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  margin-top: 5px;
+  font-size: 1rem;
+}
+
+.edit-product-section button {
+  padding: 10px;
+  border: none;
+  background-color: #f7941d;
+  color: white;
+  border-radius: 4px;
+  cursor: pointer;
+  margin: auto;
+  margin-top: 20px;
+  width: 40%;
+}
+
+.edit-product-section button:hover {
+  background-color: #ec971f;
+}
+
+
+
+/*PRODUCT PAGE*/
+/* Product Page Container */
+.product-page-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+/* Product Details Section */
+.product-page-details {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+  align-items: start; /* Align items to the start */
+}
+
+/* Product Image */
+.product-page-image img {
+  width: 80%;
+  height: auto;
+  object-fit: cover;
+  border-radius: 8px;
+}
+
+/* Product Information */
+.product-page-info {
+  display: flex;
+  flex-direction: column;
+  justify-content: start;
+  font-family: "Montserrat", sans-serif;
+}
+
+/* Product Title */
+.product-title {
+  color: orange;
+  font-size: 2.5rem;
+  font-weight: 500;
+  margin-bottom: 10px;
+}
+
+/* Product Subtitle */
+.product-subtitle {
+  font-size: 1.8rem;
+  color: black;
+  font-weight: 700;
+  margin-bottom: 10px;
+}
+
+/* Product Description */
+.product-description {
+  font-size: 1rem;
+  color: black;
+  line-height: 1.5;
+  margin-bottom: 20px;
+}
+
+/* Product Price */
+.product-price {
+  font-size: 1.8rem;
+  color: #f7941d;
+  font-weight: 700;
+  margin-bottom: 20px;
+}
+
+/* Add to Cart Form */
+.add-to-cart-form {
+  display: flex;
+  flex-direction: column; /* Stack elements vertically */
+  align-items: flex-start; /* Align items to the start */
+}
+
+.quantity-field {
+  width: 100px;
+  margin-bottom: 10px; /* Add margin to separate it from the button */
+  padding: 5px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  font-size: 1rem;
+  text-align: center;
+}
+
+.add-to-cart-button {
+  width: 40%; /* Make the button full width */
+  padding: 10px 20px;
+  font-size: 1rem;
+  color: white;
+  background-color: #f7941d;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.add-to-cart-button:hover {
+  background-color: #e67e22;
+}
+
+/* Responsive Styles */
+@media (max-width: 768px) {
+  .product-page-details {
+      grid-template-columns: 1fr;
+      text-align: center;
+  }
+
+  .product-page-image img {
+      max-width: 100%;
+      margin-bottom: 20px;
+  }
+
+  .quantity-field {
+      width: 50px;
+  }
+
+  .add-to-cart-button {
+      width: 100%; /* Ensure full width on smaller screens */
+  }
+}
+
+/*CART*/
+/* Cart Page Container */
+.cart-page-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+/* Cart Title */
+.cart-title {
+  text-align: center;
+  color: orange;
+  font-size: 2.5rem;
+  font-weight: 500;
+  margin-bottom: 20px;
+  font-family: "Montserrat";
+}
+
+/* Cart Items */
+.cart-items {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+/* Cart Item */
+.cart-item {
+  display: flex;
+  gap: 20px;
+  padding: 20px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  background-color: #f9f9f9;
+}
+
+/* Cart Item Image */
+.cart-item-image img {
+  width: 100px;
+  height: auto;
+  object-fit: cover;
+  border-radius: 8px;
+}
+
+/* Cart Item Info */
+.cart-item-info {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+/* Cart Item Title */
+.cart-item-title {
+  font-size: 1.5rem;
+  font-family: "Montserrat";
+  color: darkorange;
+  font-weight: 700;
+  margin-bottom: 10px;
+}
+
+/* Cart Item Quantity */
+.cart-item-quantity,
+.cart-item-price {
+  font-size: 1rem;
+  color: #333;
+  margin-bottom: 10px;
+}
+
+/* Remove From Cart Button */
+.remove-from-cart-button {
+  padding: 8px 16px;
+  font-size: 1rem;
+  color: white;
+  background-color: #f7941d;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.remove-from-cart-button:hover {
+  background-color: #e67e22;
+}
+
+/* Cart Total */
+.cart-total {
+  margin-top: 20px;
+  font-size: 1.5rem;
+  color: #333;
+  text-align: right;
+}
+
+/* Checkout Button */
+.checkout-button-container {
+  margin-top: 30px;
+  text-align: right;
+}
+
+.checkout-button {
+  padding: 12px 24px;
+  font-size: 1.2rem;
+  color: white;
+  background-color: #f7941d;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.checkout-button:hover {
+  background-color: #e67e22;
+}
+
+/* Responsive Styles */
+@media (max-width: 768px) {
+  .cart-items {
+      flex-direction: column;
+  }
+
+  .cart-item {
+      flex-direction: column;
+      text-align: center;
+  }
+
+  .cart-item-image img {
+      width: 100%;
+      margin-bottom: 20px;
+  }
+
+  .cart-total {
+      text-align: center;
+  }
+
+  .checkout-button-container {
+      text-align: center;
+  }
+}
+
+/*CHECKOUT*/
+
+/* Checkout Page Container */
+.checkout-page-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+/* Checkout Title */
+.checkout-title {
+  text-align: center;
+  color: orange;
+  font-size: 2.5rem;
+  font-weight: 500;
+  margin-bottom: 20px;
+  font-family: "Montserrat";
+}
+
+/* Order Summary */
+.checkout-cart-summary {
+  margin-bottom: 30px;
+  padding: 20px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  background-color: #f9f9f9;
+  font-family: "Montserrat";
+  color: orange;
+}
+
+.checkout-cart-item {
+  margin-bottom: 15px;
+}
+
+.checkout-cart-item-title {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: black;
+  margin-bottom: 5px;
+}
+
+.checkout-cart-item-quantity,
+.checkout-cart-item-price {
+  font-size: 1rem;
+  color: #333;
+}
+
+.checkout-cart-total {
+  margin-top: 20px;
+  font-size: 1.5rem;
+  font-weight: 700;
+  text-align: right;
+}
+
+/* Checkout Form */
+.checkout-form {
+  display: flex;
+  flex-direction: column;
+}
+
+.checkout-form label {
+  margin-top: 15px;
+  font-size: 1rem;
+  font-weight: bold;
+  color: #666;
+  font-family: "Montserrat";
+}
+
+.billing-title {
+  font-family: "Montserrat";
+  color: orange;
+}
+
+.checkout-form input,
+.checkout-form select {
+  padding: 10px;
+  margin-top: 5px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  font-size: 1rem;
+  font-family: "Montserrat";
+}
+
+.checkout-button {
+  margin-top: 30px;
+  padding: 12px 24px;
+  font-size: 1.2rem;
+  color: white;
+  background-color: #f7941d;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-family: "Montserrat";
+  margin-bottom: 100px;
+}
+
+.checkout-button:hover {
+  background-color: #e67e22;
+}
+
+/* Responsive Styles */
+@media (max-width: 768px) {
+  .checkout-cart-summary {
+    text-align: center;
+  }
+
+  .checkout-cart-total {
+    text-align: center;
+  }
+}
+
 
 
 /* FOOTER */
 footer {
   background: linear-gradient(to bottom, transparent, #f9deb7);
   padding: 20px;
-  display: flex;
   justify-content: center;
   font-family: "Montserrat";
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  z-index: 1000;
 }
 
 .footer-container {

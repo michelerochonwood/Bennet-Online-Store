@@ -1,10 +1,25 @@
-<!-- views/login.hbs -->
-<form action="/auth/login" method="POST">
-    <label for="email">Email:</label>
-    <input type="email" id="email" name="email" required>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+    <link rel="stylesheet" href="/css/styles.css"> <!-- Link to your CSS file -->
+</head>
+<body>
+
+    <div class="login-container">
+        <h1 class="center-page-title">Login</h1>
+        <form class="login-form" action="/auth/login" method="POST">
+            <label for="email">Email:</label>
+            <input type="email" id="email" name="email" placeholder="Enter your email" required>
     
-    <label for="password">Password:</label>
-    <input type="password" id="password" name="password" required>
+            <label for="password">Password:</label>
+            <input type="password" id="password" name="password" placeholder="Enter your password" required>
     
-    <button type="submit">Login</button>
+            <button type="submit">Login</button>
 </form>
+    </div>
+
+</body>
+</html>

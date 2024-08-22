@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Your Cart</title>
+    <link rel="stylesheet" href="/css/styles.css">
+</head>
+<body>
+
+    <div class="cart-page-container">
+        <h2 class="cart-title">Your Cart</h1>
+
+        {{#if cart.length}}
+        <div class="cart-items">
+            {{#each cart}}
+            <div class="cart-item">
+                <div class="cart-item-image">
+                    <img src="{{this.product.image}}" alt="{{this.product.title}}">
+                </div>
+                <div class="cart-item-info">
+                    <div class="cart-item-title">{{this.product.title}}</div>
+                    <div class="cart-item-quantity">
+                        Quantity: {{this.quantity}}
+                    </div>
+                    <div class="cart-item-price">
+                        Price: ${{this.product.price}} x {{this.quantity}} = ${{multiply this.product.price this.quantity}}
+                    </div>
+                    <form action="/cart/remove/{{this.product._id}}" method="POST" class="remove-from-cart-form">
+                        <button type="submit" class="remove-from-cart-button">Remove</button>
+                    </form>
+                </div>
+            </div>
+            {{/each}}
+        </div>
+
+        <div class="cart-total">
+            <p>Total: ${{totalCartPrice cart}}</p>
+        </div>
+
+<div class="checkout-button-container">
+    <form action="/checkout" method="GET">
+        <button type="submit" class="checkout-button">Proceed to Checkout</button>
+    </form>
+</div>
+
+        {{else}}
+        <p>Your cart is empty.</p>
+        {{/if}}
+    </div>
+
+</body>
+</html>
